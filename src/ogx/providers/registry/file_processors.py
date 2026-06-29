@@ -260,7 +260,7 @@ See [Unstructured's documentation](https://docs.unstructured.io/) for more detai
             api=Api.file_processors,
             provider_type="remote::docling-serve",
             adapter_type="docling-serve",
-            pip_packages=["httpx"],
+            pip_packages=["httpx", "docling-slim[service-client]>=2.103.0"],
             module="ogx.providers.remote.file_processor.docling_serve",
             config_class="ogx.providers.remote.file_processor.docling_serve.DoclingServeFileProcessorConfig",
             api_dependencies=[Api.files],
@@ -292,7 +292,7 @@ docker run -p 5001:5001 quay.io/docling-project/docling-serve
 Then start OGX with the remote Docling Serve provider:
 
 ```bash
-DOCLING_SERVE_URL=http://localhost:5001/v1 ogx stack run \\
+DOCLING_SERVE_URL=http://localhost:5001 ogx stack run \\
   --providers "file_processors=remote::docling-serve,files=inline::localfs,vector_io=inline::faiss,inference=inline::sentence-transformers,inference=remote::ollama" \\
   --port 8321
 ```
@@ -304,7 +304,7 @@ file_processors:
   - provider_id: docling-serve
     provider_type: remote::docling-serve
     config:
-      base_url: ${env.DOCLING_SERVE_URL:=http://localhost:5001/v1}
+      base_url: ${env.DOCLING_SERVE_URL:=http://localhost:5001}
       api_key: ${env.DOCLING_SERVE_API_KEY:=}
 ```
 
