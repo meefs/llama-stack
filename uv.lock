@@ -38,6 +38,7 @@ constraints = [
     { name = "protobuf", specifier = ">=5.29.6" },
     { name = "pyasn1", specifier = ">=0.6.3" },
     { name = "pydantic-settings", specifier = ">=2.14.2" },
+    { name = "python-engineio", specifier = ">=4.13.2" },
     { name = "python-multipart", specifier = ">=0.0.31" },
     { name = "python-socketio", specifier = ">=5.16.2" },
     { name = "requests", specifier = ">=2.34.2" },
